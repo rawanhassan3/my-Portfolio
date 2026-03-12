@@ -13,6 +13,16 @@ const Admin = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const formatDate = (date) => {
+    if (!date) return "Sending...";
+    // If it's a Firebase Timestamp object
+    if (date.seconds) {
+      return new Date(date.seconds * 1000).toLocaleString();
+    }
+    // Fallback for strings
+    return new Date(date).toLocaleString();
+  };
+
   useEffect(() => {
     const q = query(collection(db, "contacts"), orderBy("date", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -122,7 +132,7 @@ const Admin = () => {
                   </a>
                   <p className="text-xs text-text-muted flex items-center gap-2">
                     <Calendar size={14} className="shrink-0" />
-                    {new Date(contact.date).toLocaleString()}
+                    {formatDate(contact.date)}
                   </p>
                 </div>
                 

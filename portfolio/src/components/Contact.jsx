@@ -12,7 +12,7 @@ const Contact = () => {
   });
   const [submitStatus, setSubmitStatus] = React.useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email || !formData.message) {
       setSubmitStatus("error");
@@ -20,19 +20,17 @@ const Contact = () => {
     }
 
     try {
-      const newContact = {
-        id: Date.now().toString(),
-        ...formData,
-        date: new Date().toISOString()
-      };
+      const { db } = await import("../firebase");
+      const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
       
-      const existingContacts = JSON.parse(localStorage.getItem("portfolio_contacts") || "[]");
-      localStorage.setItem("portfolio_contacts", JSON.stringify([newContact, ...existingContacts]));
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        date: serverTimestamp()
+      });
       
       setSubmitStatus("success");
       setFormData({ fullName: "", email: "", subject: "", message: "" });
       
-      // Reset status after a few seconds
       setTimeout(() => setSubmitStatus(null), 3000);
     } catch (err) {
       console.error("Error saving contact:", err);

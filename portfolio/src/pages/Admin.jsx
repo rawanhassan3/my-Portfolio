@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { LogOut, Trash2, Mail, Calendar, User, AlignLeft } from "lucide-react";
+import { LogOut, Trash2, Mail, Calendar, User, AlignLeft, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
+import { db } from "../firebase";
+import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 
 const Admin = () => {
   const [contacts, setContacts] = useState([]);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadContacts();
-  }, []);
+  const [loading, setLoading] = useState(true);
 
-  const loadContacts = () => {
-    const savedContacts = JSON.parse(localStorage.getItem("portfolio_contacts") || "[]");
-    setContacts(savedContacts);
-  };
+  useEffect(() => {
+    const q = query(collection(db, "contacts"), orderBy("date", "desc"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const contactList = [];
+      querySnapshot.forEach((doc) => {
+        contactList.push({ id: doc.id, ...doc.data() });
+      });
+      setContacts(contactList);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  const handleDelete = (id) => {
-    const updatedContacts = contacts.filter((c) => c.id !== id);
-    setContacts(updatedContacts);
-    localStorage.setItem("portfolio_contacts", JSON.stringify(updatedContacts));
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "contacts", id));
+    } catch (err) {
+      console.error("Error deleting document: ", err);
+    }
   };
 
   return (
@@ -61,7 +72,12 @@ const Admin = () => {
           </div>
         </motion.header>
 
-        {contacts.length === 0 ? (
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="w-12 h-12 text-primary animate-spin mb-4" />
+            <p className="text-text-muted">Loading your messages...</p>
+          </div>
+        ) : contacts.length === 0 ? (
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}

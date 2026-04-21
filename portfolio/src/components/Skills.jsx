@@ -56,7 +56,7 @@ const Skills = () => {
             TECH <br /> <span className="text-primary">STACK.</span>
           </motion.h2>
           <p className="text-xl text-text-muted font-medium max-w-lg">
-            The power behind the funky. A curated selection of technologies I use to build modern web experiences.
+            The technologies and tools I use to bring ideas to life.
           </p>
         </div>
 

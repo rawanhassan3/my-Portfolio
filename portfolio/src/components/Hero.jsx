@@ -37,7 +37,7 @@ const Hero = () => {
             <div className="flex items-center gap-4 mb-8">
               <span className="h-[2px] w-12 bg-primary"></span>
               <span className="text-primary font-black uppercase tracking-[0.5em] text-xs">
-                Creative Frontend Developer
+                Creative Software Developer
               </span>
             </div>
 

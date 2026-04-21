@@ -1,5 +1,6 @@
 import React from "react";
 import shopmartHome from '../assets/shopmart-home.png';
+import amwalLogo from '../assets/amwal_tech_logo.jfif';
 import { 
   Monitor, 
   Layout, 
@@ -38,7 +39,7 @@ export const EXPERIENCES = [
     role: "Data Engineering Analyst Intern",
     company: "Amwal Company (Saudi Arabia)",
     duration: "3-Month Internship",
-    logoPath: "amwal_tech_logo.jfif",
+    logo: amwalLogo,
     points: [
       "Analyzed real company datasets to identify trends and support decision-making.",
       "Built interactive monthly dashboards in Looker and Redash, enabling teams to monitor key metrics.",
@@ -52,7 +53,7 @@ export const PROJECTS = [
   {
     title: 'Social Hub',
     description: 'A modern social media web application built with React that allows users to create posts, like posts, and interact with content in real-time.',
-    tech: ['React', 'Firebase', 'Tailwind', 'Framer Motion'],
+    tech: ['React', 'ProtectedRoutes', 'Tailwind', 'Framer Motion'],
     gradient: 'from-blue-600 to-indigo-600',
     liveUrl: 'https://social-hub-theta.vercel.app/',
     githubUrl: 'https://github.com/rawanhassan3/SocialHub'

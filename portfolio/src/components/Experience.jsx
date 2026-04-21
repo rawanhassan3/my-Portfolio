@@ -28,7 +28,7 @@ const Experience = () => {
             THE <br /> <span className="text-secondary">JOURNEY.</span>
           </motion.h2>
           <p className="text-xl text-text-muted font-medium max-w-lg">
-            A timeline of my professional growth and the funky experiences along the way.
+            A timeline of my professional growth and internships.
           </p>
         </div>
 
@@ -61,8 +61,12 @@ const Experience = () => {
                    <div className="p-8 md:p-12 rounded-[2.5rem] bg-surface border-2 border-slate-200 shadow-xl relative group hover:border-primary transition-all duration-500">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
                         <div className="flex items-center gap-6">
-                          <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                             <Briefcase size={32} />
+                          <div className="w-16 h-16 rounded-2xl bg-white border-2 border-slate-200 overflow-hidden flex items-center justify-center text-primary group-hover:border-primary transition-all duration-500 shadow-sm shrink-0">
+                            {exp.logo ? (
+                              <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-cover" />
+                            ) : (
+                              <Briefcase size={32} />
+                            )}
                           </div>
                           <div>
                             <h3 className="text-3xl md:text-4xl font-black tracking-tighter group-hover:text-primary transition-colors">

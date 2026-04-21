@@ -67,10 +67,10 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-7xl md:text-[8rem] font-black tracking-tighter leading-[0.8] text-text mb-10">
-                LET'S <br /> <span className="text-primary">VIBE.</span>
+                GET IN <br /> <span className="text-primary">TOUCH.</span>
               </h2>
               <p className="text-xl text-text-muted font-medium max-w-sm mb-12">
-                Have a funky project in mind? Or just want to say hi? Drop a message and let's create something iconic.
+                I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
               </p>
 
               <div className="space-y-6">
@@ -84,14 +84,14 @@ const Contact = () => {
                       href={item.link} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className={`flex items-center gap-6 p-6 rounded-[2rem] border-2 border-slate-200 bg-white transition-all duration-500 group ${item.color}`}
+                      className={`flex items-center gap-6 p-6 rounded-[2rem] dark:text-black border-2 border-slate-200 bg-white transition-all duration-500 group ${item.color}`}
                     >
-                      <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-white group-hover:text-black">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:text-black flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-white group-hover:text-black">
                         {item.icon}
                       </div>
                       <div className="group-hover:text-white transition-colors">
-                        <p className="text-[10px] uppercase tracking-widest font-black opacity-50">{item.label}</p>
-                        <p className="font-black text-sm md:text-base tracking-tight">{item.value}</p>
+                        <p className="text-[10px] uppercase tracking-widest font-black opacity-50 dark:text-black">{item.label}</p>
+                        <p className="font-black text-sm md:text-base tracking-tight dark:text-black">{item.value}</p>
                       </div>
                     </a>
                   </Magnetic>

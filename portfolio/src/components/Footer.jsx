@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
           <div className="md:col-span-6">
             <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8">
-              STAY <br /> <span className="text-primary">FUNKY.</span>
+              RAWAN <br /> <span className="text-primary">HASSAN.</span>
             </h2>
             <p className="text-xl text-text-muted font-medium max-w-sm">
               © {currentYear} Rawan Hassan. Built with passion and a lot of caffeine.

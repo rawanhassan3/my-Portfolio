@@ -5,16 +5,23 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CustomCursor from "./components/CustomCursor";
+import Grain from "./components/Grain";
+import Preloader from "./components/Preloader";
 
 function App() {
   return (
     <AuthProvider>
+      <Preloader />
       <div className="bg-background text-text min-h-screen selection:bg-primary/30 selection:text-white">
-        {/* Background Decorative Blobs */}
+        <CustomCursor />
+        <Grain />
+        
+        {/* Subtle background accents for depth */}
         <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-accent/10 rounded-full blur-[120px]"></div>
-          <div className="absolute top-[30%] right-[10%] w-[25%] h-[25%] bg-secondary/10 rounded-full blur-[120px]"></div>
+          <div className="absolute top-[-8%] left-[-8%] w-[36%] h-[36%] bg-primary/10 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-[6%] right-[-4%] w-[30%] h-[30%] bg-accent/8 rounded-full blur-[100px]"></div>
+          <div className="absolute top-[28%] right-[12%] w-[22%] h-[22%] bg-secondary/10 rounded-full blur-[100px]"></div>
         </div>
 
         <BrowserRouter>

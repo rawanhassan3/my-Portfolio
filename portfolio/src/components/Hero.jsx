@@ -1,95 +1,127 @@
 import React from "react";
-import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import heroGraphic from '../assets/ChatGPT Image Mar 12, 2026, 01_58_50 AM.png';
-import { SOCIAL_LINKS } from '../constants';
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
+import { ArrowRight, Github, Linkedin, Mail, Cpu as CpuIcon, Layers } from "lucide-react";
+import heroGraphic from "../assets/ChatGPT Image Mar 12, 2026, 01_58_50 AM.png";
+import { SOCIAL_LINKS } from "../constants";
+import Magnetic from "./Magnetic";
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center pt-10 lg:pt-0">
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left mt-2 lg:mt-0"
-        >
+    <section id="home" className="section-padding pt-32 md:pt-48 overflow-hidden relative">
+      {/* Funky Background Shapes */}
+      <motion.div 
+        animate={{ 
+          rotate: 360,
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10"
+      />
+      <motion.div 
+        animate={{ 
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 -left-24 w-64 h-64 bg-secondary/20 rounded-full blur-[80px] -z-10"
+      />
+
+      <div className="container-default grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6 }}
-            className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary font-medium text-sm mb-6"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "circOut" }}
           >
-            Available for new opportunities
+            <div className="flex items-center gap-4 mb-8">
+              <span className="h-[2px] w-12 bg-primary"></span>
+              <span className="text-primary font-black uppercase tracking-[0.5em] text-xs">
+                Creative Frontend Developer
+              </span>
+            </div>
+
+            <h1 className="text-6xl sm:text-7xl lg:text-[7rem] font-black leading-[0.75] tracking-tighter mb-10">
+              <span className="block">I'm</span>
+              <span className="text-transparent border-text" style={{ WebkitTextStroke: '2px var(--color-text)' }}>RAWAN</span>
+              <span className="block text-primary">SOFTWARE ENGINEER</span>
+            </h1>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="max-w-2xl"
+            >
+              <p className="text-xl md:text-2xl text-text-muted font-medium leading-tight mb-10">
+                Hi, I'm <span className="text-text font-black">Rawan Hassan</span>. I build web applications that don't just work—they <span className="italic text-secondary">vibe</span>.
+              </p>
+
+              <div className="flex flex-wrap gap-6">
+                <Link to="projects" smooth duration={450} offset={-76}>
+                  <Magnetic>
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-8 py-5 bg-primary text-white font-black uppercase tracking-widest text-sm rounded-full shadow-[0_0_40px_rgba(255,0,110,0.3)] hover:shadow-[0_0_60px_rgba(255,0,110,0.5)] transition-all"
+                    >
+                      View My Work
+                    </motion.button>
+                  </Magnetic>
+                </Link>
+                <Link to="contact" smooth duration={450} offset={-76}>
+                  <Magnetic>
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-8 py-5 border-2 border-text text-text font-black uppercase tracking-widest text-sm rounded-full hover:bg-text hover:text-background transition-all"
+                    >
+                      Let's Talk
+                    </motion.button>
+                  </Magnetic>
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
+        </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Hi, I'm <span className="text-gradient">Rawan</span>
-          </h1>
-
-          <h2 className="text-2xl md:text-3xl text-text-muted font-medium mb-8">
-            Frontend Developer building modern web applications with React
-          </h2>
-
-          <p className="text-lg text-text-muted/80 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
-            Third-year Software Engineering student and Frontend Developer specializing in building responsive and user-friendly web applications using React, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS. Experienced in integrating REST APIs into frontend applications and testing endpoints using Postman. Worked on real-world projects and live datasets during a Data Analysis internship, including building interactive dashboards and extracting business insights. Passionate about creating scalable, highquality applications and currently expanding skills toward Full-Stack Development.
-          </p>
-
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12 w-full">
-            <Link to="projects" smooth={true} duration={500} offset={-70}>
-              <button className="bg-primary hover:bg-primary/80 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all cursor-pointer group">
-                View Projects
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-            <Link to="contact" smooth={true} duration={500} offset={-70}>
-              <button className="bg-surface hover:bg-surface/80 border border-white/10 text-white px-8 py-4 rounded-xl font-bold transition-all cursor-pointer">
-                Contact Me
-              </button>
-            </Link>
-          </div>
-
-          <div className="flex gap-6 justify-center lg:justify-start w-full">
-            <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors">
-              <Github size={24} />
-            </a>
-            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors">
-              <Linkedin size={24} />
-            </a>
-            <a href={SOCIAL_LINKS.mail} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors">
-              <Mail size={24} />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Graphic */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, type: "spring", bounce: 0.4 }}
-          className="relative flex justify-center items-center order-1 lg:order-2 w-full max-w-[280px] sm:max-w-md lg:max-w-full mx-auto"
-        >
-          {/* Subtle background glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/20 via-transparent to-transparent opacity-50 blur-3xl rounded-full"></div>
-          
-          <motion.img
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            src={heroGraphic}
-            alt="Hero Graphic"
-            className="relative w-full max-w-lg object-contain z-10 mix-blend-multiply opacity-90 contrast-125 hover:mix-blend-normal transition-all duration-500"
-            style={{ 
-              WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)',
-              maskImage: 'radial-gradient(circle at center, black 40%, transparent 80%)'
-            }}
-          />
-          
-          {/* Decorative elements */}
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
-        </motion.div>
+        <div className="lg:col-span-4 hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.2, type: "spring" }}
+            className="relative"
+          >
+            <div className="w-full aspect-square bg-accent rounded-[3rem] rotate-6 absolute inset-0 -z-10" />
+            <div className="w-full aspect-square bg-secondary rounded-[3rem] -rotate-3 absolute inset-0 -z-10" />
+            <div className="w-full aspect-square bg-surface border-4 border-text rounded-[3rem] overflow-hidden p-4">
+              <div className="w-full h-full bg-slate-100 rounded-[2rem] overflow-hidden relative">
+                <img 
+                  src={heroGraphic} 
+                  alt="Rawan Hassan" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
+              </div>
+            </div>
+            
+            {/* Floating Badges */}
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -top-10 -right-10 bg-white border-2 border-text p-4 rounded-2xl shadow-xl rotate-12"
+            >
+              <CpuIcon size={32} className="text-primary" />
+            </motion.div>
+            <motion.div 
+              animate={{ y: [0, 20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+              className="absolute -bottom-10 -left-10 bg-white border-2 border-text p-4 rounded-2xl shadow-xl -rotate-12"
+            >
+              <Layers size={32} className="text-secondary" />
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

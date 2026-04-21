@@ -7,11 +7,18 @@ import Experience from '../components/Experience';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import Marquee from '../components/Marquee';
 import { ArrowUp } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 
 function Home() {
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 110,
+    damping: 22,
+    mass: 0.2
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +37,17 @@ function Home() {
 
   return (
     <>
+      <motion.div
+        style={{ scaleX: smoothProgress }}
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent origin-left z-[60]"
+      />
       <Navbar />
       <main>
         <Hero />
+        <Marquee text="Software Engineer • Frontend Developer • Data Analyst" speed={30} />
         <About />
         <Skills />
+        <Marquee text="React • Tailwind • Next.js • TypeScript" speed={25} direction="right" />
         <Experience />
         <Projects />
         <Contact />
@@ -49,7 +62,7 @@ function Home() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 p-4 bg-primary text-white rounded-full shadow-2xl shadow-primary/20 cursor-pointer hover:scale-110 hover:bg-primary/80 transition-all z-50 flex items-center justify-center"
+            className="fixed bottom-7 right-6 btn btn-primary btn-icon rounded-full cursor-pointer z-50"
             aria-label="Back to top"
           >
             <ArrowUp size={24} />

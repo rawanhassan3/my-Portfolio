@@ -1,4 +1,5 @@
 import React from "react";
+import shopmartHome from '../assets/shopmart-home.png';
 import { 
   Monitor, 
   Layout, 
@@ -18,15 +19,16 @@ import {
   Terminal,
   BookOpen,
   Box,
-  Binary
+  Binary,
+  Bot,
+  Rocket,
+  MousePointer2
 } from 'lucide-react';
 
 
 export const NAV_LINKS = [
   { name: 'Home', to: 'home' },
   { name: 'About', to: 'about' },
-  { name: 'Skills', to: 'skills' },
-  { name: 'Experience', to: 'experience' },
   { name: 'Projects', to: 'projects' },
   { name: 'Contact', to: 'contact' },
 ];
@@ -50,33 +52,18 @@ export const PROJECTS = [
   {
     title: 'Social Hub',
     description: 'A modern social media web application built with React that allows users to create posts, like posts, and interact with content in real-time.',
-    tech: ['React', 'ProtectedRoutes', 'Tailwind', 'Framer Motion'],
+    tech: ['React', 'Firebase', 'Tailwind', 'Framer Motion'],
     gradient: 'from-blue-600 to-indigo-600',
-    icon: <Monitor size={48} className="text-blue-400" />,
-    image: null, // <-- We will put the image here
-    iframeUrl: 'https://social-hub-theta.vercel.app/', // Interactive preview on hover!
     liveUrl: 'https://social-hub-theta.vercel.app/',
-    githubUrl: 'https://github.com/rawanhassan3/SocialHub.git' // Update this when you have the github link
+    githubUrl: 'https://github.com/rawanhassan3/SocialHub'
   },
   {
-    title: 'Responsive Landing Page',
-    description: 'A modern responsive landing page with Tailwind CSS focusing on high conversion and accessibility.',
-    tech: ['React', 'Tailwind CSS', 'Vite'],
+    title: 'Shopmart',
+    description: 'A modern e-commerce web app built with Next.js + TypeScript, featuring a clean storefront experience and a scalable structure ready for growth.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     gradient: 'from-emerald-500 to-teal-500',
-    icon: <Layout size={48} className="text-emerald-400" />,
-    image: null,
-    liveUrl: '#',
-    githubUrl: '#'
-  },
-  {
-    title: 'Admin Dashboard',
-    description: 'A comprehensive dashboard interface with reusable components, charts, and dark/light mode support.',
-    tech: ['React', 'Recharts', 'Lucide Icons', 'CSS Modules'],
-    gradient: 'from-purple-600 to-pink-600',
-    icon: <BarChart3 size={48} className="text-purple-400" />,
-    image: null,
-    liveUrl: '#',
-    githubUrl: '#'
+    liveUrl: 'https://shomart-ecommerce.vercel.app/',
+    githubUrl: 'https://github.com/rawanhassan3/E_COMMERCE.git'
   },
 ];
 
@@ -85,7 +72,9 @@ export const SKILLS = {
     { name: 'HTML5', icon: <Layers />, color: 'text-orange-500' },
     { name: 'CSS3', icon: <Palette />, color: 'text-blue-500' },
     { name: 'JavaScript (ES6+)', icon: <Cpu />, color: 'text-yellow-400' },
+    { name: 'TypeScript', icon: <Binary />, color: 'text-blue-500' },
     { name: 'React.js', icon: <Code />, color: 'text-blue-400' },
+    { name: 'Next.js', icon: <Monitor />, color: 'text-zinc-200' },
     { name: 'React Router', icon: <Layout />, color: 'text-red-400' },
     { name: 'Bootstrap', icon: <Box />, color: 'text-purple-500' },
     { name: 'Tailwind CSS', icon: <Palette />, color: 'text-cyan-400' },
@@ -103,6 +92,9 @@ export const SKILLS = {
     { name: 'Postman', icon: <Send />, color: 'text-orange-400' },
     { name: 'DevTools', icon: <Terminal />, color: 'text-blue-400' },
     { name: 'VS Code', icon: <Code />, color: 'text-blue-500' },
+    { name: 'Cursor', icon: <MousePointer2 />, color: 'text-cyan-300' },
+    { name: 'Claude', icon: <Bot />, color: 'text-amber-300' },
+    { name: 'AntiGravity', icon: <Rocket />, color: 'text-fuchsia-300' },
     { name: 'Figma', icon: <Figma />, color: 'text-pink-400' },
     { name: 'MySQL', icon: <Database />, color: 'text-blue-400' },
     { name: 'Jupyter', icon: <BookOpen />, color: 'text-orange-500' },

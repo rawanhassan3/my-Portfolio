@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   });
 
   const login = (password) => {
-    // We check against the environment variable instead of hardcoded text in the code
     const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'rawan123';
     
     if (password === correctPassword) {

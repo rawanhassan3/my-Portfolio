@@ -1,47 +1,51 @@
 import React from "react";
-import { Github, Linkedin, Mail, Twitter, Code2 } from 'lucide-react';
-import { Link } from 'react-scroll';
-import { SOCIAL_LINKS } from '../constants';
+import { Github, Linkedin, Mail, Code2 } from "lucide-react";
+import { Link } from "react-scroll";
+import { SOCIAL_LINKS } from "../constants";
+import Magnetic from "./Magnetic";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-6 border-t border-white/5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <div className="flex items-center gap-2">
-            <div className="bg-primary/20 p-2 rounded-lg text-primary">
-              <Code2 size={24} />
+    <footer className="py-20 border-t-4 border-text bg-surface relative overflow-hidden">
+      <div className="container-default">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+          <div className="md:col-span-6">
+            <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8">
+              STAY <br /> <span className="text-primary">FUNKY.</span>
+            </h2>
+            <p className="text-xl text-text-muted font-medium max-w-sm">
+              © {currentYear} Rawan Hassan. Built with passion and a lot of caffeine.
+            </p>
+          </div>
+
+          <div className="md:col-span-6 flex flex-col md:items-end gap-10">
+            <div className="flex gap-4">
+              {[
+                { href: SOCIAL_LINKS.github, icon: <Github size={24} />, color: "hover:bg-primary" },
+                { href: SOCIAL_LINKS.linkedin, icon: <Linkedin size={24} />, color: "hover:bg-secondary" },
+                { href: SOCIAL_LINKS.mail, icon: <Mail size={24} />, color: "hover:bg-accent" },
+              ].map((item, i) => (
+                <Magnetic key={i}>
+                  <a 
+                    href={item.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`w-16 h-16 rounded-2xl bg-background border-2 border-slate-200 flex items-center justify-center transition-all duration-300 group ${item.color} hover:text-white hover:border-transparent hover:-translate-y-2`}
+                  >
+                    {item.icon}
+                  </a>
+                </Magnetic>
+              ))}
             </div>
-            <span className="text-xl font-bold tracking-tighter text-white">RAWAN<span className="text-primary">.</span></span>
+            
+            <div className="flex gap-8">
+              <Link to="about" smooth className="font-black text-xs uppercase tracking-widest hover:text-primary cursor-pointer transition-colors">About</Link>
+              <Link to="projects" smooth className="font-black text-xs uppercase tracking-widest hover:text-primary cursor-pointer transition-colors">Projects</Link>
+              <Link to="contact" smooth className="font-black text-xs uppercase tracking-widest hover:text-primary cursor-pointer transition-colors">Contact</Link>
+            </div>
           </div>
-          <p className="text-text-muted text-sm max-w-xs text-center md:text-left">
-            Built with React, Tailwind CSS, and Framer Motion. Focused on creating premium digital experiences.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex gap-8">
-            <Link to="about" smooth={true} className="text-sm text-text-muted hover:text-primary transition-colors cursor-pointer">About</Link>
-            <Link to="projects" smooth={true} className="text-sm text-text-muted hover:text-primary transition-colors cursor-pointer">Projects</Link>
-            <Link to="skills" smooth={true} className="text-sm text-text-muted hover:text-primary transition-colors cursor-pointer">Skills</Link>
-          </div>
-          <p className="text-text-muted text-xs">
-            © {currentYear} Rawan. All rights reserved.
-          </p>
-        </div>
-
-        <div className="flex gap-4">
-          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
-            <Github size={20} />
-          </a>
-          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
-            <Linkedin size={20} />
-          </a>
-          <a href={SOCIAL_LINKS.mail} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-all border border-white/5">
-            <Mail size={20} />
-          </a>
         </div>
       </div>
     </footer>
